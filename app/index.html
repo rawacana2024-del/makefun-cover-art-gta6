@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Nights — Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VN</span>
+    <span class="brand-text"><strong>VICE NIGHTS</strong><em>Cover Studio</em></span>
+  </div>
+  <p class="tagline">Turn up to three photos and a caption into GTA-style multi-panel poster art.</p>
+</header>
+
+<main class="layout">
+  <section class="stage-col">
+    <div class="stage-wrap">
+      <canvas id="stage" width="1080" height="1080" aria-label="Cover preview"></canvas>
+    </div>
+    <div class="stage-tools">
+      <label class="zoom-label">Hero zoom
+        <input id="zoom" type="range" min="1" max="2.5" step="0.05" value="1">
+        <span id="zoomValue">1.00&times;</span>
+      </label>
+      <button id="resetView" type="button">Reset view</button>
+      <span class="hint">Drag the cover to pan the hero photo.</span>
+    </div>
+  </section>
+
+  <aside class="panel">
+    <section class="group">
+      <h2>Photos</h2>
+      <p class="note">Your photos never leave this device. Pick a sample or upload your own.</p>
+      <div class="slot" data-slot="0">
+        <div class="slot-head"><span>Photo 1 &middot; hero</span><img class="thumb" id="thumb0" alt=""></div>
+        <div class="slot-row">
+          <select id="sample0" aria-label="Photo 1 sample">
+            <option value="">No photo</option>
+            <option value="sunset">Sample: Sunset Blvd</option>
+            <option value="neon">Sample: Neon Pier</option>
+            <option value="dusk">Sample: City Dusk</option>
+          </select>
+          <label class="upload">Upload<input id="file0" type="file" accept="image/*"></label>
+        </div>
+      </div>
+      <div class="slot" data-slot="1">
+        <div class="slot-head"><span>Photo 2</span><img class="thumb" id="thumb1" alt=""></div>
+        <div class="slot-row">
+          <select id="sample1" aria-label="Photo 2 sample">
+            <option value="">No photo</option>
+            <option value="sunset">Sample: Sunset Blvd</option>
+            <option value="neon">Sample: Neon Pier</option>
+            <option value="dusk">Sample: City Dusk</option>
+          </select>
+          <label class="upload">Upload<input id="file1" type="file" accept="image/*"></label>
+        </div>
+      </div>
+      <div class="slot" data-slot="2">
+        <div class="slot-head"><span>Photo 3</span><img class="thumb" id="thumb2" alt=""></div>
+        <div class="slot-row">
+          <select id="sample2" aria-label="Photo 3 sample">
+            <option value="">No photo</option>
+            <option value="sunset">Sample: Sunset Blvd</option>
+            <option value="neon">Sample: Neon Pier</option>
+            <option value="dusk">Sample: City Dusk</option>
+          </select>
+          <label class="upload">Upload<input id="file2" type="file" accept="image/*"></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Layout</h2>
+      <div class="choices" id="layoutChoices">
+        <button type="button" data-layout="poster" class="active">Poster</button>
+        <button type="button" data-layout="triptych">Triptych</button>
+        <button type="button" data-layout="single">Single</button>
+      </div>
+      <p class="choice-note" id="layoutNote">Poster: one hero photo on top, two insets below.</p>
+    </section>
+
+    <section class="group">
+      <h2>Colour grade</h2>
+      <div class="choices" id="gradeChoices">
+        <button type="button" data-grade="sunset" class="active">Sunset</button>
+        <button type="button" data-grade="neon">Neon</button>
+        <button type="button" data-grade="noir">Noir</button>
+        <button type="button" data-grade="palm">Palm</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>Words</h2>
+      <label class="field">Title
+        <input id="title" type="text" value="VICE NIGHTS" maxlength="40">
+      </label>
+      <label class="field">Caption
+        <input id="caption" type="text" value="Welcome to Vice City" maxlength="80">
+      </label>
+    </section>
+
+    <section class="group">
+      <h2>Export</h2>
+      <label class="field">Size
+        <select id="size">
+          <option value="1080x1080" selected>1080 &times; 1080 (square)</option>
+          <option value="1080x1350">1080 &times; 1350 (portrait)</option>
+          <option value="1920x1080">1920 &times; 1080 (landscape)</option>
+          <option value="1080x1920">1080 &times; 1920 (story)</option>
+        </select>
+      </label>
+      <button id="exportBtn" type="button" class="export">Export PNG</button>
+      <p class="note" id="exportNote">Exports <code>vice-nights-cover-&lt;width&gt;x&lt;height&gt;.png</code>.</p>
+    </section>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>All art, lettering and fonts are original. No Rockstar logo, artwork, wordmark or font is used anywhere. Photos stay on your device.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
